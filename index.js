@@ -50,5 +50,12 @@ app.get('/:city', (req, res) => {
         case 'santa marta':
             res.send('Magdalena');
             break;
+        default:
+            // obetener el departamento del map, primera letra mayus, enviar
+            const Dpt = City2Dpt.get(CityNoAccent) || City;
+            console.log(Dpt);
+            const DptYesUpper = Dpt.charAt(0).toUpperCase() + Dpt.slice(1);
+            res.send(DptYesUpper);
+            break;
     }
 });
